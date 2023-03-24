@@ -4,31 +4,16 @@
  */
 package com.mycompany.chatapplicationproject;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Hp
  */
-
-
-public class Login extends javax.swing.JFrame {
+public class AdminLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new form AdminLogin
      */
-     Connection cn;
-    
-    PreparedStatement pst;
-    ResultSet rs; 
-    public Login() {
+    public AdminLogin() {
         initComponents();
     }
 
@@ -43,16 +28,16 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtfullname = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtfullname = new javax.swing.JTextField();
         txtpassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("STUDENT LOGIN");
+        jLabel1.setText("ADMIN LOGIN");
 
-        jLabel2.setText("Fullname");
+        jLabel2.setText("Name ");
 
         jLabel3.setText("Password");
 
@@ -68,35 +53,37 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtfullname)
-                        .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                    .addComponent(jLabel1))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(txtfullname, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                        .addComponent(txtpassword)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(txtfullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,12 +91,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //ChatRoom chat = new ChatRoom();
-        //chat.show();
-        //dispose();
-        
-        login();
-       
+        ChatRoom logon = new ChatRoom();
+        logon.show();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -129,20 +113,20 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new AdminLogin().setVisible(true);
             }
         });
     }
@@ -155,35 +139,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtfullname;
     private javax.swing.JTextField txtpassword;
     // End of variables declaration//GEN-END:variables
-
-    private void login() {
-       //String name=txtfullname.getText();
-       //String password= txtpassword.getText();
-       
-       
-        try{
-            cn=DriverManager.getConnection("jdbc:mysql://localhost/chatapplication","root",null);
-            pst=cn.prepareStatement("SELECT * FROM signup WHERE Name = ? AND Password = ?");
-           
-            pst.setString(1,txtfullname.getText());
-            pst.setString(2,txtpassword.getText());
-            rs=pst.executeQuery();
-                if(rs.next())
-            {
-                    ChatRoom  mf = new ChatRoom();
-                    mf.show();
-                    dispose();
-            }
-            else{
-                    JOptionPane.showMessageDialog(null, "Incorrect Username Or Password", "Login Failed", 2);
-                }
-            
-        }
-         
-      catch(SQLException e)
-        {
-               Logger.getLogger(Login.class.getName()).log(Level.SEVERE,null,e);
-        }
-        
-    }
 }
