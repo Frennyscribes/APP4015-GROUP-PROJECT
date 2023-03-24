@@ -7,12 +7,8 @@ package com.mycompany.chatapplicationproject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
+//import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 
 /**
@@ -31,13 +27,12 @@ public class SignUp extends javax.swing.JFrame {
     Connection cn;
     
     PreparedStatement pst;
-    ResultSet rs; 
-    boolean checkUser = false;
+    //ResultSet rs; 
     
     public SignUp() {
         initComponents();
         
-        //myconnection();
+        myconnection();
     }
 
     /**
@@ -147,7 +142,7 @@ public class SignUp extends javax.swing.JFrame {
         
         insertrecord();
         
-        MainLogin logon = new MainLogin();
+        Login logon = new Login();
         logon.show();
         dispose();
        
@@ -206,14 +201,12 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField txtpassword;
     // End of variables declaration//GEN-END:variables
 
-    /*
     private void myconnection() {
         try{
             
-           cn=DriverManager.getConnection("jdbc:mysql://localhost/chatapplication","root",null);
-           pst=cn.prepareStatement("select *from signup"); 
-           rs=pst.executeQuery();
-          
+            cn=DriverManager.getConnection("jdbc:mysql://localhost/chatapplication","root",null);
+            pst=cn.prepareStatement("select *from signup"); 
+           // rs=pst.executeQuery();
         }
         catch(SQLException e)
         {
@@ -222,75 +215,22 @@ public class SignUp extends javax.swing.JFrame {
         }
 
     }
-*/
-    
-    public boolean checkUsername(String username){
-         try{
-            
-           cn=DriverManager.getConnection("jdbc:mysql://localhost/chatapplication","root",null);
-           pst=cn.prepareStatement("select *from signup"); 
-           rs=pst.executeQuery();
-           if(rs.next())
-            {
-                checkUser = true;
-            }
-        }
-        catch(SQLException e)
-        {
-                
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,e);
-        }
-         return checkUser;
-        
-    }
     
 
     private void insertrecord() {
-        
-        
-        if(txtfullname.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Add A Username");
-        }
-        else if( txtpassword.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Add A Password");
-        }
-        /*
-        else if(checkUsername(txtfullname.getText()))
-        {
-            JOptionPane.showMessageDialog(null, "This Username Already Exists");
-        }
-*/
-        else if(txtid .getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Add ID");
-        }
-         else if(txtmajor.getSelectedItem().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Select your major");
-        }
-        
-        
         try{
-            cn=DriverManager.getConnection("jdbc:mysql://localhost/chatapplication","root",null);
             pst=cn.prepareStatement("insert into signup values(?,?,?,?)");
             pst.setString(1,txtfullname.getText());
             pst.setString(2, (String) txtmajor.getSelectedItem());
             pst.setString(3,txtid.getText());
             pst.setString(4,txtpassword.getText());
             pst.execute();
-           
-        } 
-      catch(SQLException e)
+     
+        }
+        catch(SQLException e)
         {
-               Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE,null,e);
+                System.out.println(e );
         }
         
     }
-    
-   
-
-
-
 }
