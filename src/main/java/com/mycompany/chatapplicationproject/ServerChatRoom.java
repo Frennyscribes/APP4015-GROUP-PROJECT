@@ -8,23 +8,25 @@ package com.mycompany.chatapplicationproject;
  *
  * @author Hp
  */
+
 import java.io.DataInputStream;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ChatRoom extends javax.swing.JFrame {
+public class ServerChatRoom extends javax.swing.JFrame {
 
     /**
      * Creates new form ChatRoom
      */
+     static ServerSocket ss;
     static Socket s;
     static DataInputStream dis;
-    static DataOutput dout;
+    static DataOutputStream dout;
 
-    public ChatRoom() {
+    public ServerChatRoom() {
         initComponents();
     }
 
@@ -72,7 +74,8 @@ public class ChatRoom extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Prisha");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hp\\Downloads\\IconsChat\\icons8-customer-48.png")); // NOI18N
+        jLabel1.setText("Edwin");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -95,7 +98,7 @@ public class ChatRoom extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -248,18 +251,19 @@ public class ChatRoom extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new Events().setVisible(true);
-        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void messagesendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messagesendActionPerformed
         // TODO add your handling code here:
-        try {
+       try {
+            // TODO add your handling code here:
 
             String msg = "";
             msg = msgtext.getText();
             dout.writeUTF(msg);
             msgtext.setText("");
         } catch (IOException ex) {
+            //Logger.getLogger(ChatRoom.class.getName()).log(Level.SEVERE, null, ex);
             System.out.print(ex);
         }
     }//GEN-LAST:event_messagesendActionPerformed
@@ -286,32 +290,34 @@ public class ChatRoom extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerChatRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChatRoom().setVisible(true);
+                new ServerChatRoom().setVisible(true);
             }
         });
         try {
             String msgin = "";
 
-            s = new Socket("192.168.56.1", 1202);//localhost ip address
+            ss = new ServerSocket(1202);
+            s = ss.accept();
             dis = new DataInputStream(s.getInputStream());
             dout = new DataOutputStream(s.getOutputStream());
 
             while (!msgin.equals("exit")) {
                 msgin = dis.readUTF();
-                msgarea.setText(msgarea.getText() + "\n Edwin: " + msgin);
+                msgarea.setText(msgarea.getText() + "\n Prisha: " + msgin);
             }
 
         } catch (IOException e) {

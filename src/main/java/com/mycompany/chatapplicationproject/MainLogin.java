@@ -58,9 +58,9 @@ public class MainLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatIcons/chatIcons/icons8-user-shield-48.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hp\\Downloads\\IconsChat\\icons8-user-shield-48.png")); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatIcons/chatIcons/icons8-student-center-48.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hp\\Downloads\\IconsChat\\icons8-student-center-48.png")); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(250, 82, 250));
 
