@@ -107,7 +107,7 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatIcons/chatIcons/icons8-sign-up-48.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hp\\Downloads\\IconsChat\\icons8-sign-up-48.png")); // NOI18N
         jLabel1.setText("SIGN UP");
 
         jPanel2.setBackground(new java.awt.Color(250, 82, 250));
